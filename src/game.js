@@ -1,11 +1,10 @@
 import "./game.css";
-import './components/components.css'
+import './components/components.css';
 import { useState, useEffect } from "react";
-import { ref, set, onValue } from "firebase/database";
-import { database } from "./firebase_config";
 import Grid from "./components/grid";
 import Popup from "./components/popup";
 import MovePopup from "./components/move_popup";
+import { updateRecord, fetchRecord, generateGrid } from "./helpers/utils";
 
 const ROWS = 6;
 const COLUMNS = 7;
@@ -19,25 +18,7 @@ const Game = () => {
     const [isPlayerTurn, setIsPlayerTurn] = useState(true);
     const [record, setRecord] = useState({ Ties: 0, Losses: 0, Wins: 0 });
 
-    const generateGrid = () => {
-        const grid = [];
-        for (let row = 0; row < ROWS; row++) {
-            const currentRow = [];
-            for (let col = 0; col < COLUMNS; col++) {
-                currentRow.push({
-                    id: `row${row}-col${col}`,
-                    row,
-                    col,
-                    isClicked: false,
-                    AIPlace: false,
-                });
-            }
-            grid.push(currentRow);
-        }
-        return grid;
-    };
-
-    const [gridData, setGridData] = useState(generateGrid());
+    const [gridData, setGridData] = useState(generateGrid(ROWS, COLUMNS));
 
     const handleButtonClick = (row, col, id) => {
         console.log(`Button clicked at row ${row}, column ${col}`);
@@ -156,7 +137,7 @@ const Game = () => {
                 }
                 setGridData(newGridData);
                 setIsPlayerTurn(true);
-                fetchRecord();
+                fetchRecord(setRecord);
             })
             .catch((error) => {
                 console.error("Error sending data:", error);
@@ -179,37 +160,8 @@ const Game = () => {
         setGridData(newGridData);
     };
 
-    const updateRecord = (wins, losses, ties) => {
-        const recordRef = ref(database, "Connect4/Record");
-        set(recordRef, {
-            Wins: wins,
-            Losses: losses,
-            Ties: ties,
-        })
-            .then(() => {
-                console.log("Record updated successfully");
-            })
-            .catch((error) => {
-                console.error("Error updating record: ", error);
-            });
-    };
-
-    const fetchRecord = () => {
-        const recordRef = ref(database, "Connect4/Record");
-        onValue(recordRef, (snapshot) => {
-            if (snapshot.exists()) {
-                console.log(snapshot);
-                setRecord(snapshot.val());
-            } else {
-                console.log("No data available");
-            }
-        }, (error) => {
-            console.error("Error fetching record: ", error);
-        });
-    };
-
     useEffect(() => {
-        fetchRecord();
+        fetchRecord(setRecord);
     }, []);
 
     return (
