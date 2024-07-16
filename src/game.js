@@ -75,7 +75,7 @@ const Game = () => {
         setIsPlayerTurn(false);
     };
 
-    const [data, setData] = useState([{}]);
+    const [setData] = useState([{}]);
     const sendData = (data) => {
         fetch("https://apoxie.pythonanywhere.com/connect4", {
             method: "POST",
