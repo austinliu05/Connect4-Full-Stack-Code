@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Connect4 Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Connect4 Game! This project started as a class assignment written in ReasonML, where players could compete against an AI model in the terminal. It has since been converted to Python and deployed as a full-stack application with a modern UI. The frontend is written in React (TypeScript), and the backend is powered by Flask, with Firebase managing the records.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Play Connect4 against an AI model
+- Modern and responsive user interface
+- User authentication and record management with Firebase
+- Real-time updates and smooth gameplay experience
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ensure you have the following installed on your machine:
 
-### `npm run build`
+- Python 3.x
+- Node.js and npm (or yarn)
+- Firebase account
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```sh
+    git clone https://github.com/yourusername/connect4-game.git
+    cd connect4-game
+    ```
 
-### `npm run eject`
+2. Set up a virtual environment and activate it:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install the backend dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Configure Firebase:
 
-## Learn More
+    - Create a Firebase project in the Firebase console.
+    - Generate Firebase credentials and save the JSON file in the backend directory.
+    - Update the Firebase configuration in the backend code.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Start the Flask server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```sh
+    flask run
+    ```
 
-### Code Splitting
+### Frontend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Navigate to the frontend directory:
 
-### Analyzing the Bundle Size
+    ```sh
+    cd frontend
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Install the frontend dependencies:
 
-### Making a Progressive Web App
+    ```sh
+    npm install
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Configure Firebase in the frontend:
 
-### Advanced Configuration
+    - Update the Firebase configuration in the `src/firebaseConfig.ts` file with your project's details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Start the React development server:
 
-### Deployment
+    ```sh
+    npm start
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `npm run build` fails to minify
+1. Open your browser and navigate to `http://localhost:3000`.
+2. Register or log in to your account.
+3. Start a new game and enjoy playing Connect4 against the AI!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Structure
+
