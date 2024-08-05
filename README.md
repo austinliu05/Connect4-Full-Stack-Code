@@ -1,8 +1,8 @@
 # Connect4 Game
 
-Welcome to the Connect4 AI Model! 
-
 https://austin-connect4.netlify.app/
+
+Welcome to the Connect4 AI Model! 
 
 ## Introduction
 
@@ -11,7 +11,7 @@ This Connect4 Game project is a modern take on the classic Connect4 game. This p
 ## Features
 
 - **Interactive Gameplay**: Seamless Connect4 game experience with a responsive UI.
-- **AI Opponent**: AI opponent powered by Python algorithms.
+- **AI Opponent**: AI opponent powered by Python using a minimax and estimateValue algorithm.
 - **Game History**: Tracks AI game history and performance.
 
 ## Tech Stack
